@@ -17,6 +17,7 @@
 		CE1657551BEF47CD00C4320C /* MomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1657541BEF47CD00C4320C /* MomentTests.swift */; };
 		CE1657601BEF47CD00C4320C /* MomentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16575F1BEF47CD00C4320C /* MomentUITests.swift */; };
 		CE16576E1BEF48C700C4320C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE16576D1BEF48C700C4320C /* MediaPlayer.framework */; };
+		CE1657701BEF59FD00C4320C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE16576F1BEF59FD00C4320C /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		CE16575F1BEF47CD00C4320C /* MomentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentUITests.swift; sourceTree = "<group>"; };
 		CE1657611BEF47CD00C4320C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE16576D1BEF48C700C4320C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CE16576F1BEF59FD00C4320C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1657701BEF59FD00C4320C /* CoreLocation.framework in Frameworks */,
 				CE16576E1BEF48C700C4320C /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +87,7 @@
 		CE16572F1BEF47CD00C4320C = {
 			isa = PBXGroup;
 			children = (
+				CE16576F1BEF59FD00C4320C /* CoreLocation.framework */,
 				CE16576D1BEF48C700C4320C /* MediaPlayer.framework */,
 				CE16573A1BEF47CD00C4320C /* Moment */,
 				CE1657531BEF47CD00C4320C /* MomentTests */,
@@ -204,6 +208,11 @@
 					CE1657371BEF47CD00C4320C = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 7Y64JH4PXJ;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					CE16574F1BEF47CD00C4320C = {
 						CreatedOnToolsVersion = 7.1;
