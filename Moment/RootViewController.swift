@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class RootViewController: UIViewController, UIPageViewControllerDelegate {
 
@@ -14,6 +15,10 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 
 
     override func viewDidLoad() {
+        let controller = MPMusicPlayerController.systemMusicPlayer();
+        let playing = controller.nowPlayingItem;
+        print(playing?.albumArtist, playing?.albumTitle, playing?.artist, playing?.title);
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Configure the page view controller and add it as a child view controller.

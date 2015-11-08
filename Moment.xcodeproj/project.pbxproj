@@ -16,6 +16,7 @@
 		CE16574A1BEF47CD00C4320C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1657481BEF47CD00C4320C /* LaunchScreen.storyboard */; };
 		CE1657551BEF47CD00C4320C /* MomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1657541BEF47CD00C4320C /* MomentTests.swift */; };
 		CE1657601BEF47CD00C4320C /* MomentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16575F1BEF47CD00C4320C /* MomentUITests.swift */; };
+		CE16576E1BEF48C700C4320C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE16576D1BEF48C700C4320C /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		CE16575B1BEF47CD00C4320C /* MomentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE16575F1BEF47CD00C4320C /* MomentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentUITests.swift; sourceTree = "<group>"; };
 		CE1657611BEF47CD00C4320C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE16576D1BEF48C700C4320C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE16576E1BEF48C700C4320C /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 		CE16572F1BEF47CD00C4320C = {
 			isa = PBXGroup;
 			children = (
+				CE16576D1BEF48C700C4320C /* MediaPlayer.framework */,
 				CE16573A1BEF47CD00C4320C /* Moment */,
 				CE1657531BEF47CD00C4320C /* MomentTests */,
 				CE16575E1BEF47CD00C4320C /* MomentUITests */,
