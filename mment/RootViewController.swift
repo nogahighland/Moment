@@ -2,18 +2,40 @@
 //  RootViewController.swift
 //  mment
 //
-//  Created by noga.highland on 2015/11/10.
+//  Created by noga.highland on 2015/11/08.
 //  Copyright © 2015年 nogahighland. All rights reserved.
 //
 
 import UIKit
+import MediaPlayer
+import CoreLocation
 
-class RootViewController: UIViewController, UIPageViewControllerDelegate {
+class RootViewController: UIViewController, UIPageViewControllerDelegate, CLLocationManagerDelegate {
 
     var pageViewController: UIPageViewController?
-
-
+    var player: MPMusicPlayerController
+    var locationManager: CLLocationManager
+    var currentLocation: CLLocation?
+    
+    required init?(coder aDecoder: NSCoder) {
+        player = MPMusicPlayerController.systemMusicPlayer();
+        locationManager = CLLocationManager();
+        super.init(coder: aDecoder);
+    }
+    
     override func viewDidLoad() {
+        let playing = player.nowPlayingItem;
+        print(playing?.albumArtist, playing?.albumTitle, playing?.artist, playing?.title);
+
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self, selector: "nowPlayingItemDidChange:", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player);
+        player.beginGeneratingPlaybackNotifications();
+
+        locationManager.requestAlwaysAuthorization();
+        locationManager.startUpdatingLocation();
+        locationManager.delegate = self;
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Configure the page view controller and add it as a child view controller.
@@ -87,7 +109,22 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 
         return .Mid
     }
-
-
+    
+    @objc
+    func nowPlayingItemDidChange(notify : NSNotification) {
+        let playing = player.nowPlayingItem;
+        print(playing?.albumArtist, playing?.albumTitle, playing?.artist, playing?.title);
+        print(currentLocation?.coordinate);
+    }
+    
+    //MARK: - CLLocationManager delegate methods
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print(status);
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = manager.location;
+    }
 }
 
