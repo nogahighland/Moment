@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5D94F01BF2456700CD7064 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94EF1BF2456700CD7064 /* libicucore.tbd */; };
+		CE5D94F21BF2457100CD7064 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F11BF2457100CD7064 /* CFNetwork.framework */; };
+		CE5D94F41BF2457A00CD7064 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F31BF2457A00CD7064 /* Foundation.framework */; };
+		CE5D94F61BF2458100CD7064 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F51BF2458100CD7064 /* Security.framework */; };
+		CE5D94F81BF2459600CD7064 /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F71BF2459600CD7064 /* libSocketRocket.a */; };
 		CE7BDA2C1BF102BE0042C331 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */; };
 		CE7BDA2E1BF102BE0042C331 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA2D1BF102BE0042C331 /* RootViewController.swift */; };
 		CE7BDA301BF102BE0042C331 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA2F1BF102BE0042C331 /* DataViewController.swift */; };
@@ -39,6 +44,12 @@
 /* Begin PBXFileReference section */
 		27A10730026294DEAFD1E9BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D1CEF0F4F016B4AA62EA04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CE5D94EF1BF2456700CD7064 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		CE5D94F11BF2457100CD7064 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CE5D94F31BF2457A00CD7064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE5D94F51BF2458100CD7064 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CE5D94F71BF2459600CD7064 /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "Pods/../build/Debug-iphoneos/libSocketRocket.a"; sourceTree = "<group>"; };
+		CE5D94FC1BF2490800CD7064 /* SocketRocket-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SocketRocket-Bridging-Header.h"; path = "Bridge/SocketRocket-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE7BDA281BF102BE0042C331 /* mment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7BDA2D1BF102BE0042C331 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +73,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5D94F81BF2459600CD7064 /* libSocketRocket.a in Frameworks */,
+				CE5D94F61BF2458100CD7064 /* Security.framework in Frameworks */,
+				CE5D94F41BF2457A00CD7064 /* Foundation.framework in Frameworks */,
+				CE5D94F21BF2457100CD7064 /* CFNetwork.framework in Frameworks */,
+				CE5D94F01BF2456700CD7064 /* libicucore.tbd in Frameworks */,
 				DED1274C31F8D8C6CAD1755D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +102,11 @@
 		1F86FDBD23A04648992D4960 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE5D94F71BF2459600CD7064 /* libSocketRocket.a */,
+				CE5D94F51BF2458100CD7064 /* Security.framework */,
+				CE5D94F31BF2457A00CD7064 /* Foundation.framework */,
+				CE5D94F11BF2457100CD7064 /* CFNetwork.framework */,
+				CE5D94EF1BF2456700CD7064 /* libicucore.tbd */,
 				27A10730026294DEAFD1E9BE /* libPods.a */,
 			);
 			name = Frameworks;
@@ -98,6 +119,14 @@
 				C2D1CEF0F4F016B4AA62EA04 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE5D94F91BF2472300CD7064 /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D94FC1BF2490800CD7064 /* SocketRocket-Bridging-Header.h */,
+			);
+			name = Bridge;
 			sourceTree = "<group>";
 		};
 		CE7BDA1F1BF102BE0042C331 = {
@@ -125,6 +154,7 @@
 		CE7BDA2A1BF102BE0042C331 /* mment */ = {
 			isa = PBXGroup;
 			children = (
+				CE5D94F91BF2472300CD7064 /* Bridge */,
 				CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */,
 				CE7BDA2D1BF102BE0042C331 /* RootViewController.swift */,
 				CE7BDA2F1BF102BE0042C331 /* DataViewController.swift */,
@@ -486,8 +516,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.noga.highland.mment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/Bridge/SocketRocket-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -498,8 +533,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.noga.highland.mment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/Bridge/SocketRocket-Bridging-Header.h";
 			};
 			name = Release;
 		};
