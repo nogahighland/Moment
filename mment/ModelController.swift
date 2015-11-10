@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MediaPlayer
+import CoreLocation
 
 /*
  A controller object that manages a simple model -- a collection of month names.
@@ -18,13 +20,39 @@ import UIKit
  */
 
 
-class ModelController: NSObject, UIPageViewControllerDataSource {
+class ModelController: NSObject, UIPageViewControllerDataSource, CLLocationManagerDelegate, SRWebSocketDelegate {
 
     var pageData: [String] = []
+    var player: MPMusicPlayerController
+    var nowPlayingItem: MPMediaItem
+    var locationManager: CLLocationManager
+    var currentLocation: CLLocation?
+    var webSocket : SRWebSocket
+    var isWSOpen:Bool
 
 
     override init() {
+        let url = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/");
+        webSocket = SRWebSocket.init(URL: url);
+        player = MPMusicPlayerController.systemMusicPlayer();
+        locationManager = CLLocationManager();
+        nowPlayingItem = player.nowPlayingItem!;
+        isWSOpen = false;
+
         super.init()
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self, selector: "nowPlayingItemDidChange:", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player);
+        player.beginGeneratingPlaybackNotifications();
+        
+        locationManager.requestAlwaysAuthorization();
+        locationManager.startUpdatingLocation();
+        locationManager.delegate = self;
+        
+        webSocket.delegate = self;
+        webSocket.open();
+        
         // Create the data model.
         let dateFormatter = NSDateFormatter()
         pageData = dateFormatter.monthSymbols
@@ -71,6 +99,46 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
             return nil
         }
         return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
+    }
+    
+    
+    private func sendNowPlayingMusicWithCoordinate() {
+        let dic:NSMutableDictionary = ["artist":nowPlayingItem.artist!];
+        let json = try! NSJSONSerialization.dataWithJSONObject(dic, options: .PrettyPrinted);
+        webSocket.send(json);
+    }
+    
+
+    @objc
+    func nowPlayingItemDidChange(notify : NSNotification) {
+        nowPlayingItem = player.nowPlayingItem!;
+        if (isWSOpen) {
+            sendNowPlayingMusicWithCoordinate();
+        }
+    }
+    
+    //MARK: - CLLocationManager delegate methods
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print(status);
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = manager.location;
+    }
+    
+    //MARK: - SRWebSocket delegate
+    
+    func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
+        print(message as? NSString);
+    }
+    func webSocketDidOpen(webSocket: SRWebSocket!) {
+        isWSOpen = true;
+        print("open!!");
+    }
+    func webSocket(webSocket: SRWebSocket!, didFailWithError error: NSError!) {
+        isWSOpen = false;
+        print("fail");
     }
 
 }

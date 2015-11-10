@@ -7,35 +7,16 @@
 //
 
 import UIKit
-import MediaPlayer
-import CoreLocation
 
-class RootViewController: UIViewController, UIPageViewControllerDelegate, CLLocationManagerDelegate {
+class RootViewController: UIViewController, UIPageViewControllerDelegate {
 
     var pageViewController: UIPageViewController?
-    var player: MPMusicPlayerController
-    var locationManager: CLLocationManager
-    var currentLocation: CLLocation?
     
     required init?(coder aDecoder: NSCoder) {
-        player = MPMusicPlayerController.systemMusicPlayer();
-        locationManager = CLLocationManager();
         super.init(coder: aDecoder);
     }
     
     override func viewDidLoad() {
-        let playing = player.nowPlayingItem;
-        print(playing?.albumArtist, playing?.albumTitle, playing?.artist, playing?.title);
-
-        NSNotificationCenter
-            .defaultCenter()
-            .addObserver(self, selector: "nowPlayingItemDidChange:", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player);
-        player.beginGeneratingPlaybackNotifications();
-
-        locationManager.requestAlwaysAuthorization();
-        locationManager.startUpdatingLocation();
-        locationManager.delegate = self;
-        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Configure the page view controller and add it as a child view controller.
@@ -110,21 +91,5 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, CLLoca
         return .Mid
     }
     
-    @objc
-    func nowPlayingItemDidChange(notify : NSNotification) {
-        let playing = player.nowPlayingItem;
-        print(playing?.albumArtist, playing?.albumTitle, playing?.artist, playing?.title);
-        print(currentLocation?.coordinate);
-    }
-    
-    //MARK: - CLLocationManager delegate methods
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        print(status);
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = manager.location;
-    }
 }
 
