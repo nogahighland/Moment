@@ -257,6 +257,14 @@
 					CE7BDA271BF102BE0042C331 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 7Y64JH4PXJ;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					CE7BDA3F1BF102BE0042C331 = {
 						CreatedOnToolsVersion = 7.1;
