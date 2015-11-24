@@ -30,26 +30,33 @@ class ModelController: NSObject, UIPageViewControllerDataSource, CLLocationManag
     var webSocket : SRWebSocket
     var isWSOpen:Bool
 
-
     override init() {
+
         let url = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/");
         webSocket = SRWebSocket.init(URL: url);
         player = MPMusicPlayerController.systemMusicPlayer();
         locationManager = CLLocationManager();
         nowPlayingItem = player.nowPlayingItem!;
+
         isWSOpen = false;
 
         super.init()
-        
+
+        //音楽
         NSNotificationCenter
             .defaultCenter()
-            .addObserver(self, selector: "nowPlayingItemDidChange:", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player);
+            .addObserver(self,
+                selector: "nowPlayingItemDidChange:",
+                name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification,
+                object: player);
         player.beginGeneratingPlaybackNotifications();
-        
+
+        //位置情報
         locationManager.requestAlwaysAuthorization();
         locationManager.startUpdatingLocation();
         locationManager.delegate = self;
-        
+
+        //WebSocket
         webSocket.delegate = self;
         webSocket.open();
         
@@ -103,11 +110,33 @@ class ModelController: NSObject, UIPageViewControllerDataSource, CLLocationManag
     
     
     private func sendNowPlayingMusicWithCoordinate() {
-        let dic:NSMutableDictionary = ["artist":nowPlayingItem.artist!];
-        let json = try! NSJSONSerialization.dataWithJSONObject(dic, options: .PrettyPrinted);
+        if (currentLocation == nil) {
+            return;
+        }
+        let dic:NSMutableDictionary = [
+            "artist":nowPlayingItem.artist!,
+            "coord" : [
+                "lat":NSNumber.init(double:(currentLocation?.coordinate.latitude)!),
+                "lon":NSNumber.init(double:(currentLocation?.coordinate.longitude)!),
+            ],
+            "title" : nowPlayingItem.title!,
+            "album" : nowPlayingItem.albumTitle!
+        ];
+        let jsonData = try! NSJSONSerialization.dataWithJSONObject(dic, options:.PrettyPrinted);
+        let json = NSString.init(data: jsonData, encoding: NSUTF8StringEncoding);
         webSocket.send(json);
+
+        let artwork = nowPlayingItem.artwork;
+        if (artwork == nil) {
+            return;
+        }
+        let image = artwork?.imageWithSize((artwork?.bounds.size)!);
+        let imageData = UIImagePNGRepresentation(image!);
+        webSocket.send(imageData);
+    
     }
     
+    //MARK: - Now Playing Music
 
     @objc
     func nowPlayingItemDidChange(notify : NSNotification) {
