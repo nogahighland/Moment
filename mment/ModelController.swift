@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import MediaPlayer
-import CoreLocation
 
 /*
  A controller object that manages a simple model -- a collection of month names.
@@ -20,46 +18,13 @@ import CoreLocation
  */
 
 
-class ModelController: NSObject, UIPageViewControllerDataSource, CLLocationManagerDelegate, SRWebSocketDelegate {
+class ModelController: NSObject, UIPageViewControllerDataSource {
 
     var pageData: [String] = []
-    var player: MPMusicPlayerController
-    var nowPlayingItem: MPMediaItem
-    var locationManager: CLLocationManager
-    var currentLocation: CLLocation?
-    var webSocket : SRWebSocket
-    var isWSOpen:Bool
+    var musicSender: CurrentMusicSender = CurrentMusicSender();
 
     override init() {
-
-        let url = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/");
-        webSocket = SRWebSocket.init(URL: url);
-        player = MPMusicPlayerController.systemMusicPlayer();
-        locationManager = CLLocationManager();
-        nowPlayingItem = player.nowPlayingItem!;
-
-        isWSOpen = false;
-
         super.init()
-
-        //音楽
-        NSNotificationCenter
-            .defaultCenter()
-            .addObserver(self,
-                selector: "nowPlayingItemDidChange:",
-                name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification,
-                object: player);
-        player.beginGeneratingPlaybackNotifications();
-
-        //位置情報
-        locationManager.requestAlwaysAuthorization();
-        locationManager.startUpdatingLocation();
-        locationManager.delegate = self;
-
-        //WebSocket
-        webSocket.delegate = self;
-        webSocket.open();
-        
         // Create the data model.
         let dateFormatter = NSDateFormatter()
         pageData = dateFormatter.monthSymbols
@@ -107,68 +72,5 @@ class ModelController: NSObject, UIPageViewControllerDataSource, CLLocationManag
         }
         return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
     }
-    
-    
-    private func sendNowPlayingMusicWithCoordinate() {
-        if (currentLocation == nil) {
-            return;
-        }
-        let dic:NSMutableDictionary = [
-            "artist":nowPlayingItem.artist!,
-            "coord" : [
-                "lat":NSNumber.init(double:(currentLocation?.coordinate.latitude)!),
-                "lon":NSNumber.init(double:(currentLocation?.coordinate.longitude)!),
-            ],
-            "title" : nowPlayingItem.title!,
-            "album" : nowPlayingItem.albumTitle!
-        ];
-        let jsonData = try! NSJSONSerialization.dataWithJSONObject(dic, options:.PrettyPrinted);
-        let json = NSString.init(data: jsonData, encoding: NSUTF8StringEncoding);
-        webSocket.send(json);
-
-        let artwork = nowPlayingItem.artwork;
-        if (artwork == nil) {
-            return;
-        }
-        let image = artwork?.imageWithSize((artwork?.bounds.size)!);
-        let imageData = UIImagePNGRepresentation(image!);
-        webSocket.send(imageData);
-    
-    }
-    
-    //MARK: - Now Playing Music
-
-    @objc
-    func nowPlayingItemDidChange(notify : NSNotification) {
-        nowPlayingItem = player.nowPlayingItem!;
-        if (isWSOpen) {
-            sendNowPlayingMusicWithCoordinate();
-        }
-    }
-    
-    //MARK: - CLLocationManager delegate methods
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        print(status);
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = manager.location;
-    }
-    
-    //MARK: - SRWebSocket delegate
-    
-    func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
-        print(message as? NSString);
-    }
-    func webSocketDidOpen(webSocket: SRWebSocket!) {
-        isWSOpen = true;
-        print("open!!");
-    }
-    func webSocket(webSocket: SRWebSocket!, didFailWithError error: NSError!) {
-        isWSOpen = false;
-        print("fail");
-    }
-
 }
 

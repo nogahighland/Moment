@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE216D3E1C0DFB370097EECB /* CurrentMusicStatusSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE216D3D1C0DFB370097EECB /* CurrentMusicStatusSender.swift */; };
 		CE5D94F01BF2456700CD7064 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94EF1BF2456700CD7064 /* libicucore.tbd */; };
 		CE5D94F21BF2457100CD7064 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F11BF2457100CD7064 /* CFNetwork.framework */; };
 		CE5D94F41BF2457A00CD7064 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F31BF2457A00CD7064 /* Foundation.framework */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		27A10730026294DEAFD1E9BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D1CEF0F4F016B4AA62EA04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CE216D3D1C0DFB370097EECB /* CurrentMusicStatusSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentMusicStatusSender.swift; sourceTree = "<group>"; };
 		CE5D94EF1BF2456700CD7064 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		CE5D94F11BF2457100CD7064 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CE5D94F31BF2457A00CD7064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -163,6 +165,7 @@
 				CE7BDA361BF102BE0042C331 /* Assets.xcassets */,
 				CE7BDA381BF102BE0042C331 /* LaunchScreen.storyboard */,
 				CE7BDA3B1BF102BE0042C331 /* Info.plist */,
+				CE216D3D1C0DFB370097EECB /* CurrentMusicStatusSender.swift */,
 			);
 			path = mment;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE216D3E1C0DFB370097EECB /* CurrentMusicStatusSender.swift in Sources */,
 				CE7BDA2E1BF102BE0042C331 /* RootViewController.swift in Sources */,
 				CE7BDA321BF102BE0042C331 /* ModelController.swift in Sources */,
 				CE7BDA301BF102BE0042C331 /* DataViewController.swift in Sources */,
