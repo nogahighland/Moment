@@ -13,7 +13,7 @@ import CoreLocation
 class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelegate {
     
     var player: MPMusicPlayerController = MPMusicPlayerController.systemMusicPlayer()
-    var nowPlayingItem: MPMediaItem
+    var nowPlayingItem: MPMediaItem?
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var url: NSURL = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/")!
@@ -24,7 +24,7 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
     
     override init() {
         webSocket = SRWebSocket.init(URL: url)
-        nowPlayingItem = player.nowPlayingItem!
+        nowPlayingItem = player.nowPlayingItem
         
         super.init()
         
@@ -47,7 +47,7 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
         webSocket.open()
     }
     
-    public func reopenWebSocket() {
+    private func reopenWebSocket() {
         webSocket = SRWebSocket.init(URL: url)
         webSocket.delegate = self
         if (!isWSOpen) {
@@ -63,9 +63,9 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
             return
         }
         let dic:NSMutableDictionary = [
-            "artist":nowPlayingItem.artist!,
-            "title" : nowPlayingItem.title!,
-            "album" : nowPlayingItem.albumTitle!,
+            "artist": (nowPlayingItem?.artist)!,
+            "title" : (nowPlayingItem?.title)!,
+            "album" : (nowPlayingItem?.albumTitle)!,
             "coord" : [
                 "lat":NSNumber.init(double:(currentLocation?.coordinate.latitude)!),
                 "lon":NSNumber.init(double:(currentLocation?.coordinate.longitude)!),
@@ -76,7 +76,7 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
         let json = NSString.init(data: jsonData, encoding: NSUTF8StringEncoding)
         webSocket.send(json)
         
-        let artwork = nowPlayingItem.artwork
+        let artwork = nowPlayingItem?.artwork
         if (artwork == nil) {
             return
         }
