@@ -15,9 +15,9 @@
 		CE5D94F81BF2459600CD7064 /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F71BF2459600CD7064 /* libSocketRocket.a */; };
 		CE68EB0A1C43C04000F4FE88 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68EB091C43C04000F4FE88 /* WebViewController.swift */; };
 		CE68EB0C1C43C2BD00F4FE88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */; };
+		CE68EB0F1C43E62A00F4FE88 /* ApplicationUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68EB0E1C43E62A00F4FE88 /* ApplicationUUID.swift */; };
 		CE7BDA2C1BF102BE0042C331 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */; };
 		CE7BDA371BF102BE0042C331 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7BDA361BF102BE0042C331 /* Assets.xcassets */; };
-		CE7BDA3A1BF102BE0042C331 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7BDA381BF102BE0042C331 /* LaunchScreen.storyboard */; };
 		CE7BDA451BF102BE0042C331 /* mmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA441BF102BE0042C331 /* mmentTests.swift */; };
 		CE7BDA501BF102BE0042C331 /* mmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA4F1BF102BE0042C331 /* mmentUITests.swift */; };
 		DED1274C31F8D8C6CAD1755D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A10730026294DEAFD1E9BE /* libPods.a */; };
@@ -52,10 +52,10 @@
 		CE5D94FC1BF2490800CD7064 /* Mment-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Mment-Bridging-Header.h"; path = "Bridge/Mment-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE68EB091C43C04000F4FE88 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CE68EB0E1C43E62A00F4FE88 /* ApplicationUUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationUUID.swift; sourceTree = "<group>"; };
 		CE7BDA281BF102BE0042C331 /* mment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7BDA361BF102BE0042C331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE7BDA391BF102BE0042C331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7BDA3B1BF102BE0042C331 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7BDA401BF102BE0042C331 /* mmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7BDA441BF102BE0042C331 /* mmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mmentTests.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 				CE68EB091C43C04000F4FE88 /* WebViewController.swift */,
 				CE7BDA361BF102BE0042C331 /* Assets.xcassets */,
 				CE5D94F91BF2472300CD7064 /* Bridge */,
-				CE7BDA381BF102BE0042C331 /* LaunchScreen.storyboard */,
+				CE68EB0E1C43E62A00F4FE88 /* ApplicationUUID.swift */,
 			);
 			path = mment;
 			sourceTree = "<group>";
@@ -301,7 +301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE68EB0C1C43C2BD00F4FE88 /* Main.storyboard in Resources */,
-				CE7BDA3A1BF102BE0042C331 /* LaunchScreen.storyboard in Resources */,
 				CE7BDA371BF102BE0042C331 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +377,7 @@
 				CE216D3E1C0DFB370097EECB /* CurrentMusicStatusSender.swift in Sources */,
 				CE7BDA2C1BF102BE0042C331 /* AppDelegate.swift in Sources */,
 				CE68EB0A1C43C04000F4FE88 /* WebViewController.swift in Sources */,
+				CE68EB0F1C43E62A00F4FE88 /* ApplicationUUID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,17 +411,6 @@
 			targetProxy = CE7BDA4C1BF102BE0042C331 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CE7BDA381BF102BE0042C331 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE7BDA391BF102BE0042C331 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CE7BDA521BF102BE0042C331 /* Debug */ = {
