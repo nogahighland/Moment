@@ -48,8 +48,12 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
         if (currentLocation == nil) {
             return
         }
-        if (nowPlayingItem == nil || webSocket.readyState != SRReadyState.OPEN) {
-            return;
+        if (nowPlayingItem == nil) {
+            return
+        }
+        if (webSocket.readyState != SRReadyState.OPEN) {
+            self.reopenWebSocket()
+            return
         }
         let dic:NSMutableDictionary = [
             "artist": (nowPlayingItem?.artist)!,
@@ -67,6 +71,11 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
     }
     
     private func reopenWebSocket() {
+        
+        if (webSocket.readyState == SRReadyState.CONNECTING) {
+            return
+        }
+        
         webSocket = SRWebSocket.init(URL: url)
         webSocket.delegate = self
         webSocket.open()
