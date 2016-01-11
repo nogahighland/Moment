@@ -16,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         musicTracker = MmentTracker()
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         return true
+    }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        print(NSDate.init())
+        completionHandler(UIBackgroundFetchResult.Failed)
     }
 
     func applicationWillResignActive(application: UIApplication) {
