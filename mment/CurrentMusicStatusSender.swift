@@ -48,7 +48,7 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
         if (currentLocation == nil) {
             return
         }
-        if (nowPlayingItem == nil && webSocket.readyState != SRReadyState.OPEN) {
+        if (nowPlayingItem == nil || webSocket.readyState != SRReadyState.OPEN) {
             return;
         }
         let dic:NSMutableDictionary = [
