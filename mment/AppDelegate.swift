@@ -12,10 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var musicTracker: CurrentMusicSender?
+    var musicTracker: MmentTracker?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        musicTracker = CurrentMusicSender()
+        musicTracker = MmentTracker()
         return true
     }
 

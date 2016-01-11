@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE216D3E1C0DFB370097EECB /* CurrentMusicStatusSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE216D3D1C0DFB370097EECB /* CurrentMusicStatusSender.swift */; };
+		CE216D3E1C0DFB370097EECB /* MmentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE216D3D1C0DFB370097EECB /* MmentTracker.swift */; };
 		CE5D94F01BF2456700CD7064 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94EF1BF2456700CD7064 /* libicucore.tbd */; };
 		CE5D94F21BF2457100CD7064 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F11BF2457100CD7064 /* CFNetwork.framework */; };
 		CE5D94F41BF2457A00CD7064 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F31BF2457A00CD7064 /* Foundation.framework */; };
@@ -16,6 +16,8 @@
 		CE68EB0A1C43C04000F4FE88 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68EB091C43C04000F4FE88 /* WebViewController.swift */; };
 		CE68EB0C1C43C2BD00F4FE88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */; };
 		CE68EB0F1C43E62A00F4FE88 /* ApplicationUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68EB0E1C43E62A00F4FE88 /* ApplicationUUID.swift */; };
+		CE68EB111C43F14600F4FE88 /* NowListeningLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68EB101C43F14600F4FE88 /* NowListeningLogger.swift */; };
+		CE68EB141C43F40600F4FE88 /* WebSocketConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68EB131C43F40600F4FE88 /* WebSocketConnector.swift */; };
 		CE7BDA2C1BF102BE0042C331 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */; };
 		CE7BDA371BF102BE0042C331 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7BDA361BF102BE0042C331 /* Assets.xcassets */; };
 		CE7BDA451BF102BE0042C331 /* mmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA441BF102BE0042C331 /* mmentTests.swift */; };
@@ -43,7 +45,7 @@
 /* Begin PBXFileReference section */
 		27A10730026294DEAFD1E9BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D1CEF0F4F016B4AA62EA04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		CE216D3D1C0DFB370097EECB /* CurrentMusicStatusSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentMusicStatusSender.swift; sourceTree = "<group>"; };
+		CE216D3D1C0DFB370097EECB /* MmentTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MmentTracker.swift; sourceTree = "<group>"; };
 		CE5D94EF1BF2456700CD7064 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		CE5D94F11BF2457100CD7064 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CE5D94F31BF2457A00CD7064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,6 +55,8 @@
 		CE68EB091C43C04000F4FE88 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE68EB0E1C43E62A00F4FE88 /* ApplicationUUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationUUID.swift; sourceTree = "<group>"; };
+		CE68EB101C43F14600F4FE88 /* NowListeningLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowListeningLogger.swift; sourceTree = "<group>"; };
+		CE68EB131C43F40600F4FE88 /* WebSocketConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketConnector.swift; sourceTree = "<group>"; };
 		CE7BDA281BF102BE0042C331 /* mment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7BDA361BF102BE0042C331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,11 +159,13 @@
 				CE7BDA3B1BF102BE0042C331 /* Info.plist */,
 				CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */,
 				CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */,
-				CE216D3D1C0DFB370097EECB /* CurrentMusicStatusSender.swift */,
+				CE68EB0E1C43E62A00F4FE88 /* ApplicationUUID.swift */,
+				CE216D3D1C0DFB370097EECB /* MmentTracker.swift */,
+				CE68EB101C43F14600F4FE88 /* NowListeningLogger.swift */,
+				CE68EB131C43F40600F4FE88 /* WebSocketConnector.swift */,
 				CE68EB091C43C04000F4FE88 /* WebViewController.swift */,
 				CE7BDA361BF102BE0042C331 /* Assets.xcassets */,
 				CE5D94F91BF2472300CD7064 /* Bridge */,
-				CE68EB0E1C43E62A00F4FE88 /* ApplicationUUID.swift */,
 			);
 			path = mment;
 			sourceTree = "<group>";
@@ -374,10 +380,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE216D3E1C0DFB370097EECB /* CurrentMusicStatusSender.swift in Sources */,
+				CE216D3E1C0DFB370097EECB /* MmentTracker.swift in Sources */,
 				CE7BDA2C1BF102BE0042C331 /* AppDelegate.swift in Sources */,
 				CE68EB0A1C43C04000F4FE88 /* WebViewController.swift in Sources */,
+				CE68EB141C43F40600F4FE88 /* WebSocketConnector.swift in Sources */,
 				CE68EB0F1C43E62A00F4FE88 /* ApplicationUUID.swift in Sources */,
+				CE68EB111C43F14600F4FE88 /* NowListeningLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

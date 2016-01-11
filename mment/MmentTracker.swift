@@ -10,18 +10,26 @@ import Foundation
 import MediaPlayer
 import CoreLocation
 
-class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelegate {
+class MmentTracker: NSObject, CLLocationManagerDelegate {
     
     var player: MPMusicPlayerController = MPMusicPlayerController.systemMusicPlayer()
     var nowPlayingItem: MPMediaItem?
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocation?
-    var url: NSURL = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/ws")!
-    var webSocket : SRWebSocket
+    var logger: PURLogger
     
     override init() {
-        webSocket = SRWebSocket.init(URL: url)
         nowPlayingItem = player.nowPlayingItem
+        
+        //Logger
+        let configuration = PURLoggerConfiguration.defaultConfiguration()
+        configuration.filterSettings = [
+            PURFilterSetting(filter: PURFilter.self, tagPattern: "mment.nowlistening"),
+        ]
+        configuration.outputSettings = [
+            PUROutputSetting(output: NowListeningLogger.self,   tagPattern: "mment.nowlistening"),
+        ]
+        logger = PURLogger(configuration: configuration)
         
         super.init()
         
@@ -39,9 +47,6 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
-        //WebSocket
-        webSocket.delegate = self
-        webSocket.open()
     }
     
     private func sendNowPlayingMusicWithCoordinate() {
@@ -49,10 +54,6 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
             return
         }
         if (nowPlayingItem == nil) {
-            return
-        }
-        if (webSocket.readyState != SRReadyState.OPEN) {
-            self.reopenWebSocket()
             return
         }
         let dic:NSMutableDictionary = [
@@ -65,28 +66,7 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
             ],
             "uuid" : ApplicationUUID.uuidString()
         ]
-        let jsonData = try! NSJSONSerialization.dataWithJSONObject(dic, options:.PrettyPrinted)
-        let json = NSString.init(data: jsonData, encoding: NSUTF8StringEncoding)
-        webSocket.send(json)
-    }
-    
-    private func reopenWebSocket() {
-        
-        if (webSocket.readyState == SRReadyState.CONNECTING) {
-            return
-        }
-        
-        webSocket = SRWebSocket.init(URL: url)
-        webSocket.delegate = self
-        webSocket.open()
-
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            if (self.webSocket.readyState != SRReadyState.CONNECTING) {
-                return;
-            }
-            self.reopenWebSocket();
-        }
+        logger.postLog(dic, tag: "mment.nowlistening")
     }
     
     //MARK: - Now Playing Music
@@ -105,25 +85,5 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = manager.location
-    }
-    
-    //MARK: - SRWebSocket delegate
-    
-    func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
-        print(message as? NSString)
-    }
-
-    func webSocketDidOpen(webSocket: SRWebSocket!) {
-        print("ws open")
-    }
-
-    func webSocket(webSocket: SRWebSocket!, didFailWithError error: NSError!) {
-        print("ws error")
-        reopenWebSocket()
-    }
-    
-    func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        print("ws close")
-        reopenWebSocket()
     }
 }
