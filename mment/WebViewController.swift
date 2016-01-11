@@ -27,7 +27,9 @@ class WebViewController : UIViewController {
     
     func loadAddressURL() {
         let requestURL = NSURL(string: targetURL)
-        let req = NSURLRequest(URL: requestURL!)
+        let req = NSMutableURLRequest(URL: requestURL!)
+        let uuid = NSUserDefaults.standardUserDefaults().valueForKey("uuid");
+        req.setValue("x-mment-uuid", forHTTPHeaderField: uuid as! String)
         webView.loadRequest(req)
     }
 }

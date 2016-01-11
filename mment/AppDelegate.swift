@@ -12,7 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var musicTracker: CurrentMusicSender?
 
+    func applicationDidFinishLaunching(application: UIApplication) {
+        NSUserDefaults.standardUserDefaults().setValue(NSUUID().UUIDString, forUndefinedKey: "uuid")
+        musicTracker = CurrentMusicSender()
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

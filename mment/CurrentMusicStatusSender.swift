@@ -18,7 +18,6 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
     var currentLocation: CLLocation?
     var url: NSURL = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/ws")!
     var webSocket : SRWebSocket
-    var uuid: NSUUID = NSUUID.init()
     
     override init() {
         webSocket = SRWebSocket.init(URL: url)
@@ -60,7 +59,7 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
                 "lat":NSNumber.init(double:(currentLocation?.coordinate.latitude)!),
                 "lon":NSNumber.init(double:(currentLocation?.coordinate.longitude)!),
             ],
-            "uuid" : uuid.UUIDString
+            "uuid" : NSUserDefaults.standardUserDefaults().valueForKey("uuid")!
         ]
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(dic, options:.PrettyPrinted)
         let json = NSString.init(data: jsonData, encoding: NSUTF8StringEncoding)
