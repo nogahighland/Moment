@@ -13,11 +13,9 @@
 		CE5D94F41BF2457A00CD7064 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F31BF2457A00CD7064 /* Foundation.framework */; };
 		CE5D94F61BF2458100CD7064 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F51BF2458100CD7064 /* Security.framework */; };
 		CE5D94F81BF2459600CD7064 /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5D94F71BF2459600CD7064 /* libSocketRocket.a */; };
+		CE68EB0A1C43C04000F4FE88 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68EB091C43C04000F4FE88 /* WebViewController.swift */; };
+		CE68EB0C1C43C2BD00F4FE88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */; };
 		CE7BDA2C1BF102BE0042C331 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */; };
-		CE7BDA2E1BF102BE0042C331 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA2D1BF102BE0042C331 /* RootViewController.swift */; };
-		CE7BDA301BF102BE0042C331 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA2F1BF102BE0042C331 /* DataViewController.swift */; };
-		CE7BDA321BF102BE0042C331 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA311BF102BE0042C331 /* ModelController.swift */; };
-		CE7BDA351BF102BE0042C331 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7BDA331BF102BE0042C331 /* Main.storyboard */; };
 		CE7BDA371BF102BE0042C331 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7BDA361BF102BE0042C331 /* Assets.xcassets */; };
 		CE7BDA3A1BF102BE0042C331 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7BDA381BF102BE0042C331 /* LaunchScreen.storyboard */; };
 		CE7BDA451BF102BE0042C331 /* mmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BDA441BF102BE0042C331 /* mmentTests.swift */; };
@@ -52,12 +50,10 @@
 		CE5D94F51BF2458100CD7064 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CE5D94F71BF2459600CD7064 /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "Pods/../build/Debug-iphoneos/libSocketRocket.a"; sourceTree = "<group>"; };
 		CE5D94FC1BF2490800CD7064 /* SocketRocket-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SocketRocket-Bridging-Header.h"; path = "Bridge/SocketRocket-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE68EB091C43C04000F4FE88 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE7BDA281BF102BE0042C331 /* mment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE7BDA2D1BF102BE0042C331 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		CE7BDA2F1BF102BE0042C331 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		CE7BDA311BF102BE0042C331 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		CE7BDA341BF102BE0042C331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE7BDA361BF102BE0042C331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE7BDA391BF102BE0042C331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7BDA3B1BF102BE0042C331 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -156,16 +152,14 @@
 		CE7BDA2A1BF102BE0042C331 /* mment */ = {
 			isa = PBXGroup;
 			children = (
-				CE5D94F91BF2472300CD7064 /* Bridge */,
-				CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */,
-				CE7BDA2D1BF102BE0042C331 /* RootViewController.swift */,
-				CE7BDA2F1BF102BE0042C331 /* DataViewController.swift */,
-				CE7BDA311BF102BE0042C331 /* ModelController.swift */,
-				CE7BDA331BF102BE0042C331 /* Main.storyboard */,
-				CE7BDA361BF102BE0042C331 /* Assets.xcassets */,
-				CE7BDA381BF102BE0042C331 /* LaunchScreen.storyboard */,
 				CE7BDA3B1BF102BE0042C331 /* Info.plist */,
+				CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */,
+				CE7BDA2B1BF102BE0042C331 /* AppDelegate.swift */,
 				CE216D3D1C0DFB370097EECB /* CurrentMusicStatusSender.swift */,
+				CE68EB091C43C04000F4FE88 /* WebViewController.swift */,
+				CE7BDA361BF102BE0042C331 /* Assets.xcassets */,
+				CE5D94F91BF2472300CD7064 /* Bridge */,
+				CE7BDA381BF102BE0042C331 /* LaunchScreen.storyboard */,
 			);
 			path = mment;
 			sourceTree = "<group>";
@@ -306,9 +300,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE68EB0C1C43C2BD00F4FE88 /* Main.storyboard in Resources */,
 				CE7BDA3A1BF102BE0042C331 /* LaunchScreen.storyboard in Resources */,
 				CE7BDA371BF102BE0042C331 /* Assets.xcassets in Resources */,
-				CE7BDA351BF102BE0042C331 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,10 +376,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE216D3E1C0DFB370097EECB /* CurrentMusicStatusSender.swift in Sources */,
-				CE7BDA2E1BF102BE0042C331 /* RootViewController.swift in Sources */,
-				CE7BDA321BF102BE0042C331 /* ModelController.swift in Sources */,
-				CE7BDA301BF102BE0042C331 /* DataViewController.swift in Sources */,
 				CE7BDA2C1BF102BE0042C331 /* AppDelegate.swift in Sources */,
+				CE68EB0A1C43C04000F4FE88 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,14 +413,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CE7BDA331BF102BE0042C331 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE7BDA341BF102BE0042C331 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE7BDA381BF102BE0042C331 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -526,6 +510,7 @@
 			baseConfigurationReference = E94AD89371EA365D787F382B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -543,6 +528,7 @@
 			baseConfigurationReference = C2D1CEF0F4F016B4AA62EA04 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
