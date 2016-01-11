@@ -49,7 +49,7 @@
 		CE5D94F31BF2457A00CD7064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CE5D94F51BF2458100CD7064 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CE5D94F71BF2459600CD7064 /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "Pods/../build/Debug-iphoneos/libSocketRocket.a"; sourceTree = "<group>"; };
-		CE5D94FC1BF2490800CD7064 /* SocketRocket-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SocketRocket-Bridging-Header.h"; path = "Bridge/SocketRocket-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE5D94FC1BF2490800CD7064 /* Mment-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Mment-Bridging-Header.h"; path = "Bridge/Mment-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE68EB091C43C04000F4FE88 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CE68EB0B1C43C2BD00F4FE88 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE7BDA281BF102BE0042C331 /* mment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +122,7 @@
 		CE5D94F91BF2472300CD7064 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
-				CE5D94FC1BF2490800CD7064 /* SocketRocket-Bridging-Header.h */,
+				CE5D94FC1BF2490800CD7064 /* Mment-Bridging-Header.h */,
 			);
 			name = Bridge;
 			sourceTree = "<group>";
@@ -519,7 +519,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.noga.highland.mment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/Bridge/SocketRocket-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/Bridge/Mment-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -537,7 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.noga.highland.mment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/Bridge/SocketRocket-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/Bridge/Mment-Bridging-Header.h";
 			};
 			name = Release;
 		};
