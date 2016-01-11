@@ -16,10 +16,8 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
     var nowPlayingItem: MPMediaItem?
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocation?
-    var url: NSURL = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/")!
+    var url: NSURL = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/ws")!
     var webSocket : SRWebSocket
-    var isWSOpen: Bool = false
-    var timer: NSTimer = NSTimer()
     var uuid: NSUUID = NSUUID.init()
     
     override init() {
@@ -47,20 +45,12 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
         webSocket.open()
     }
     
-    private func reopenWebSocket() {
-        webSocket = SRWebSocket.init(URL: url)
-        webSocket.delegate = self
-        if (!isWSOpen) {
-            webSocket.open()
-        }
-        if (!timer.valid) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "reopenWebSocket", userInfo: nil, repeats: true);
-        }
-    }
-    
     private func sendNowPlayingMusicWithCoordinate() {
         if (currentLocation == nil) {
             return
+        }
+        if (nowPlayingItem == nil && webSocket.readyState != SRReadyState.OPEN) {
+            return;
         }
         let dic:NSMutableDictionary = [
             "artist": (nowPlayingItem?.artist)!,
@@ -75,25 +65,28 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(dic, options:.PrettyPrinted)
         let json = NSString.init(data: jsonData, encoding: NSUTF8StringEncoding)
         webSocket.send(json)
-        
-        let artwork = nowPlayingItem?.artwork
-        if (artwork == nil) {
-            return
+    }
+    
+    private func reopenWebSocket() {
+        webSocket = SRWebSocket.init(URL: url)
+        webSocket.delegate = self
+        webSocket.open()
+
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            if (self.webSocket.readyState != SRReadyState.CONNECTING) {
+                return;
+            }
+            self.reopenWebSocket();
         }
-        let image = artwork?.imageWithSize((artwork?.bounds.size)!)
-        let imageData = UIImagePNGRepresentation(image!)
-        webSocket.send(imageData)
-        
     }
     
     //MARK: - Now Playing Music
     
     @objc
     func nowPlayingItemDidChange(notify : NSNotification) {
-        nowPlayingItem = player.nowPlayingItem!
-        if (isWSOpen) {
-            sendNowPlayingMusicWithCoordinate()
-        }
+        nowPlayingItem = player.nowPlayingItem
+        sendNowPlayingMusicWithCoordinate()
     }
     
     //MARK: - CLLocationManager delegate methods
@@ -113,19 +106,15 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
     }
 
     func webSocketDidOpen(webSocket: SRWebSocket!) {
-        isWSOpen = true
         print("ws open")
-        timer.invalidate()
     }
 
     func webSocket(webSocket: SRWebSocket!, didFailWithError error: NSError!) {
-        isWSOpen = false
         print("ws error")
         reopenWebSocket()
     }
     
     func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        isWSOpen = false
         print("ws close")
         reopenWebSocket()
     }
