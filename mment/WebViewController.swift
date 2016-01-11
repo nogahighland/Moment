@@ -16,20 +16,18 @@ class WebViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         loadAddressURL()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loadAddressURL() {
         let requestURL = NSURL(string: targetURL)
         let req = NSMutableURLRequest(URL: requestURL!)
-        let uuid = NSUserDefaults.standardUserDefaults().valueForKey("uuid");
-        req.setValue("x-mment-uuid", forHTTPHeaderField: uuid as! String)
+        let uuid = ApplicationUUID.uuidString()
+        req.setValue("x-mment-uuid", forHTTPHeaderField: uuid)
         webView.loadRequest(req)
     }
 }

@@ -59,7 +59,7 @@ class CurrentMusicSender: NSObject, CLLocationManagerDelegate, SRWebSocketDelega
                 "lat":NSNumber.init(double:(currentLocation?.coordinate.latitude)!),
                 "lon":NSNumber.init(double:(currentLocation?.coordinate.longitude)!),
             ],
-            "uuid" : NSUserDefaults.standardUserDefaults().valueForKey("uuid")!
+            "uuid" : ApplicationUUID.uuidString()
         ]
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(dic, options:.PrettyPrinted)
         let json = NSString.init(data: jsonData, encoding: NSUTF8StringEncoding)
