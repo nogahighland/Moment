@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        print(NSDate.init())
+        musicTracker?.track()
         completionHandler(UIBackgroundFetchResult.Failed)
     }
 

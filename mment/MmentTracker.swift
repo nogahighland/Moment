@@ -49,6 +49,13 @@ class MmentTracker: NSObject, CLLocationManagerDelegate {
         
     }
     
+    func track() {
+        nowPlayingItem = player.nowPlayingItem
+        sendNowPlayingMusicWithCoordinate()
+    }
+    
+    //MARK: - private
+    
     private func sendNowPlayingMusicWithCoordinate() {
         if (currentLocation == nil) {
             return

@@ -10,7 +10,7 @@ import Foundation
 
 class WebSocketConnector : NSObject, SRWebSocketDelegate {
     
-    var url: NSURL = NSURL.init(string: "ws://192.168.11.5:8080/mment-server/ws")!
+    var url: NSURL = NSURL.init(string: "ws://10.1.17.250:8082/mment-server/ws")!
     var webSocket : SRWebSocket
 
     override init() {
@@ -38,6 +38,8 @@ class WebSocketConnector : NSObject, SRWebSocketDelegate {
         }
         return false
     }
+    
+    //MARK: - private
     
     private func reopenWebSocket() {
         

@@ -12,7 +12,7 @@ class WebViewController : UIViewController {
     
     @IBOutlet var webView: UIWebView!
 
-    var targetURL = "http://192.168.11.5:8080/mment-server/"
+    var targetURL = "http://10.1.17.250:8082/mment-server/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
